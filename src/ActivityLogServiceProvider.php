@@ -2,6 +2,7 @@
 
 namespace ActivityLog;
 
+use ActivityLog\Services\ActivityLoggerService;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Router;
@@ -11,7 +12,7 @@ class ActivityLogServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/activitylog.php', 'activitylog');
 
-        $this->app->bind('activitylog', function () {
+        $this->app->bind(ActivityLoggerService::class, function () {
             return new Services\ActivityLoggerService();
         });
     }
