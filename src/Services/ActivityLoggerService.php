@@ -28,6 +28,24 @@ class ActivityLoggerService
         $requestBody = $request->except(config('activitylog.mask_request_keys', []));
         $responseBody = method_exists($response, 'getContent') ? $response->getContent() : null;
 
+        if ($responseBody !== null) {
+            $responseData = json_decode($responseBody, true);
+
+            if (is_array($responseData)) {
+                $hideFields = config('activitylog.hide_response_fields', []);
+
+                $this->sanitize($responseData, $hideFields);
+
+                // Tekrar json_encode edip loglayabilirsin
+                $safeResponseBody = json_encode($responseData);
+            } else {
+                // JSON değilse ham haliyle veya başka işlem
+                $safeResponseBody = $responseBody;
+            }
+        } else {
+            $safeResponseBody = null;
+        }
+
         $this->writer->write([
             'type'           => 'http',
             'method'         => $request->method(),
@@ -39,6 +57,17 @@ class ActivityLoggerService
             'user_agent'     => $request->userAgent(),
             'user_id'        => optional($request->user())->id,
         ]);
+    }
+
+    public function sanitize(array &$data, array $hideFields)
+    {
+        foreach ($data as $key => &$value) {
+            if (in_array($key, $hideFields)) {
+                $value = '***';
+            } elseif (is_array($value)) {
+                $this->sanitize($value, $hideFields);
+            }
+        }
     }
 
     public function logModelEvent(array $data): void
