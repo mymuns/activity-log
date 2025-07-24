@@ -1,0 +1,30 @@
+{
+  "name": "mymuns/activity-log",
+  "description": "A comprehensive Laravel 12+ package that provides request-response logging and model change tracking (versioning) with the ability to revert model states via command or API. Logs can be stored in the database or sent to external services like Logstash, Elasticsearch, Loki, or Sentry.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Erman Titiz",
+      "email": "mymuns@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "illuminate/support": "^10 || ^11"
+  },
+  "autoload": {
+    "psr-4": {
+      "ActivityLog\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "ActivityLog\\ActivityLogServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
