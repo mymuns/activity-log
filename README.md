@@ -22,7 +22,8 @@ composer require vendor/activity-log
 ```
 ### 2. Yayınlama
 ```bash
-php artisan vendor:publish --tag=activitylog-config
+php artisan vendor:publish --provider="ActivityLog\ActivityLogServiceProvider"
+php artisan vendor:publish --tag=activitylog-migrations
 ```
 
 ### 3. Yapılandırma
