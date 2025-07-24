@@ -6,6 +6,7 @@ use ActivityLog\Services\ActivityLoggerService;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Router;
+
 class ActivityLogServiceProvider extends ServiceProvider
 {
     public function register(): void
