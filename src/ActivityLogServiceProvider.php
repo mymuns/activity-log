@@ -11,7 +11,7 @@ class ActivityLogServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/activitylog.php', 'activitylog');
 
-        $this->app->bind('activity_logger', function () {
+        $this->app->bind('activitylog', function () {
             return new Services\ActivityLoggerService();
         });
     }
