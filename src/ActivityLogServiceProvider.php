@@ -27,11 +27,9 @@ class ActivityLogServiceProvider extends ServiceProvider
             $this->registerRoutes();
         }
 
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                \ActivityLog\Console\RevertActivityLogCommand::class,
-            ]);
-        }
+        $this->commands([
+            \ActivityLog\Console\RevertActivityLogCommand::class,
+        ]);
     }
     protected function registerRoutes()
     {
