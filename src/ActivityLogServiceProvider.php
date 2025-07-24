@@ -3,7 +3,7 @@
 namespace ActivityLog;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Route;
 class ActivityLogServiceProvider extends ServiceProvider
 {
     public function register(): void
