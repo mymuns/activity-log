@@ -2,7 +2,7 @@
 
 namespace ActivityLog\Middleware;
 
-use Spatie\HttpLogger\Middlewares\LogRequests as BaseLogRequests;
+use Spatie\HttpLogger\Middlewares\HttpLogger as BaseLogRequests;
 use ActivityLog\Services\ActivityLoggerService;
 use Closure;
 
