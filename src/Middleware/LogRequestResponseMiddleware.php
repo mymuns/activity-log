@@ -6,7 +6,7 @@ use Spatie\HttpLogger\Middlewares\LogRequests as BaseLogRequests;
 use ActivityLog\Services\ActivityLoggerService;
 use Closure;
 
-class LogRequests extends BaseLogRequests
+class LogRequestResponseMiddleware extends BaseLogRequests
 {
     public function handle($request, Closure $next)
     {
